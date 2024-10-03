@@ -1,6 +1,8 @@
-// Get references to form fields
-const latitudeField = document.getElementById('latitude');
-const longitudeField = document.getElementById('longitude');
+// Variables to hold captured latitude and longitude
+let capturedLatitude = null;
+let capturedLongitude = null;
+
+// Get references to the form elements
 const locationStatus = document.getElementById('location-status');
 const locationButton = document.getElementById('get-location-btn');
 
@@ -15,11 +17,9 @@ locationButton.addEventListener('click', function () {
 });
 
 function successCallback(position) {
-    const lat = position.coords.latitude;
-    const lon = position.coords.longitude;
-    latitudeField.value = lat;
-    longitudeField.value = lon;
-    locationStatus.textContent = `Location captured: Latitude ${lat}, Longitude ${lon}`;
+    capturedLatitude = position.coords.latitude;
+    capturedLongitude = position.coords.longitude;
+    locationStatus.textContent = `Location captured: Latitude ${capturedLatitude}, Longitude ${capturedLongitude}`;
 }
 
 function errorCallback(error) {
@@ -30,10 +30,14 @@ function errorCallback(error) {
 document.getElementById('locationForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
+    // Make sure the location is captured before submitting
+    if (!capturedLatitude || !capturedLongitude) {
+        alert("Please capture your location first by clicking 'Get Current Location'.");
+        return;
+    }
+
     // Get form data
     const locationName = e.target.locationName.value;
-    const latitude = e.target.latitude.value;
-    const longitude = e.target.longitude.value;
     const review = e.target.review.value;
     const rating = e.target.rating.value;
     const imageFile = e.target.image.files[0];  // Get the uploaded image file
@@ -61,11 +65,11 @@ document.getElementById('locationForm').addEventListener('submit', function (e) 
             // After image upload, get the image URL
             const imageUrl = data.data.link;
 
-            // Prepare form data to submit to SheetDB (including image URL)
+            // Prepare form data to submit to SheetDB (including image URL and captured location)
             const formData = {
                 locationName,
-                latitude,
-                longitude,
+                latitude: capturedLatitude,  // Captured latitude
+                longitude: capturedLongitude, // Captured longitude
                 imageUrl,  // Use the uploaded image URL
                 review,
                 rating
