@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map of India</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Leaflet.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+</head>
+<body>
+    <h1>Interactive Map of India with Reviews and Ratings</h1>
+
+    <!-- Form for inputting location data -->
+    <form id="locationForm">
+        <label>Location Name:</label>
+        <input type="text" name="locationName" required><br>
+
+        <label>Latitude:</label>
+        <input type="number" step="any" name="latitude" required><br>
+
+        <label>Longitude:</label>
+        <input type="number" step="any" name="longitude" required><br>
+
+        <label>Image URL:</label>
+        <input type="url" name="imageUrl" required><br>
+
+        <label>Review:</label>
+        <textarea name="review" required></textarea><br>
+
+        <label>Rating:</label>
+        <input type="number" step="0.1" name="rating" max="5" min="0" required><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Map container -->
+    <div id="map" style="height: 500px;"></div>
+
+    <!-- Leaflet.js JavaScript -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Main JS File -->
+    <script src="script.js"></script>
+</body>
+</html>
