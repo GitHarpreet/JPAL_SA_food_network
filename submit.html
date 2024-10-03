@@ -37,23 +37,35 @@
         button:hover {
             background-color: #45a049;
         }
+
+        #get-location-btn {
+            margin-bottom: 15px;
+        }
+
+        #location-status {
+            color: #888;
+        }
     </style>
 </head>
 <body>
     <h1>Submit a New Location</h1>
 
-    <form id="locationForm">
+    <!-- Form for submitting new locations -->
+    <form id="locationForm" enctype="multipart/form-data">
         <label>Location Name:</label>
         <input type="text" name="locationName" required><br>
 
         <label>Latitude:</label>
-        <input type="number" step="any" name="latitude" required><br>
+        <input type="number" step="any" name="latitude" id="latitude" readonly required><br>
 
         <label>Longitude:</label>
-        <input type="number" step="any" name="longitude" required><br>
+        <input type="number" step="any" name="longitude" id="longitude" readonly required><br>
 
-        <label>Image URL:</label>
-        <input type="url" name="imageUrl" required><br>
+        <button type="button" id="get-location-btn">Get Current Location</button>
+        <p id="location-status">Location not captured yet.</p>
+
+        <label>Image:</label>
+        <input type="file" name="image" id="image" accept="image/*" required><br>
 
         <label>Review:</label>
         <textarea name="review" required></textarea><br>
