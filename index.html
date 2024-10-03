@@ -2,44 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Map of India</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Leaflet.js CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <title>Welcome to the Map App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 15px 30px;
+            margin: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h1>Interactive Map of India with Reviews and Ratings</h1>
+    <h1>Welcome to the Interactive Map</h1>
+    <p>Select what you would like to do:</p>
 
-    <!-- Form for inputting location data -->
-    <form id="locationForm">
-        <label>Location Name:</label>
-        <input type="text" name="locationName" required><br>
-
-        <label>Latitude:</label>
-        <input type="number" step="any" name="latitude" required><br>
-
-        <label>Longitude:</label>
-        <input type="number" step="any" name="longitude" required><br>
-
-        <label>Image URL:</label>
-        <input type="url" name="imageUrl" required><br>
-
-        <label>Review:</label>
-        <textarea name="review" required></textarea><br>
-
-        <label>Rating:</label>
-        <input type="number" step="0.1" name="rating" max="5" min="0" required><br>
-
-        <button type="submit">Submit</button>
-    </form>
-
-    <!-- Map container -->
-    <div id="map" style="height: 500px;"></div>
-
-    <!-- Leaflet.js JavaScript -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <!-- Main JS File -->
-    <script src="script.js"></script>
+    <button onclick="window.location.href='submit.html'">Submit New Location</button>
+    <button onclick="window.location.href='view.html'">View Map</button>
 </body>
 </html>
